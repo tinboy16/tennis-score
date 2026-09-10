@@ -1,0 +1,44 @@
+[
+  {
+    "id": 50001,
+    "tournamentId": 202601,
+    "category": "tre",
+    "date": "2026-09-06",
+    "player1": 1001,
+    "player2": 1002,
+    "score": "6-4",
+    "winner": 1001,
+    "points": {
+      "winner": 10,
+      "loser": -5
+    }
+  },
+  {
+    "id": 50002,
+    "tournamentId": 202602,
+    "category": "trung-nien",
+    "date": "2026-09-05",
+    "player1": 1004,
+    "player2": 1007,
+    "score": "6-3",
+    "winner": 1004,
+    "points": {
+      "winner": 10,
+      "loser": -5
+    }
+  },
+  {
+    "id": 50003,
+    "tournamentId": 202603,
+    "category": "tre-lau-nam",
+    "date": "2026-08-30",
+    "player1": 1003,
+    "player2": 1008,
+    "score": "4-6",
+    "winner": 1008,
+    "points": {
+      "winner": 10,
+      "loser": -5
+    }
+  }
+]

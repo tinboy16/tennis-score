@@ -1,0 +1,30 @@
+[
+  {
+    "id": "tre",
+    "name": "Tài năng trẻ",
+    "shortName": "TRẺ",
+    "description": "Bảng xếp hạng Tài năng trẻ",
+    "active": true
+  },
+  {
+    "id": "trung-nien",
+    "name": "Tài năng trung niên",
+    "shortName": "TRUNG NIÊN",
+    "description": "Bảng xếp hạng Tài năng trung niên",
+    "active": true
+  },
+  {
+    "id": "tre-lau-nam",
+    "name": "Tài năng trẻ lâu năm",
+    "shortName": "TRẺ LÂU NĂM",
+    "description": "Bảng xếp hạng Tài năng trẻ lâu năm",
+    "active": true
+  },
+  {
+    "id": "day-banh-luom-banh",
+    "name": "Dạy banh và lượm banh",
+    "shortName": "DẠY & LƯỢM BANH",
+    "description": "Bảng xếp hạng Dạy banh và lượm banh",
+    "active": true
+  }
+]
