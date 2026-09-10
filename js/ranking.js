@@ -2,6 +2,7 @@ const state = {
     categories: [],
     players: [],
     rankings: [],
+    filteredRows: [],
     currentCategory: "all",
     filter: "all",
     search: ""
@@ -68,6 +69,35 @@ function normalizeRanking(data) {
 }
 
 /* =========================
+   NUMBER HELPERS
+========================= */
+
+function toNumber(value, fallback = 0) {
+    if (value === null || value === undefined || value === "") {
+        return fallback;
+    }
+
+    if (typeof value === "number") {
+        return Number.isFinite(value) ? value : fallback;
+    }
+
+    let str = String(value).trim();
+
+    if (/^-?\d{1,3}(\.\d{3})+$/.test(str)) {
+        str = str.replace(/\./g, "");
+    }
+
+    str = str.replace(",", ".");
+
+    const n = Number(str);
+    return Number.isFinite(n) ? n : fallback;
+}
+
+function formatNumber(value) {
+    return toNumber(value).toLocaleString("vi-VN");
+}
+
+/* =========================
    INIT
 ========================= */
 
@@ -85,9 +115,6 @@ async function init() {
 
         state.players = players.map(normalizePlayer);
 
-        console.log("PLAYERS:", state.players);
-        console.log("PLAYER COUNT:", state.players.length);
-
         renderTabs();
 
         await renderAll();
@@ -96,60 +123,38 @@ async function init() {
             document.getElementById("categorySelect");
 
         if (categorySelect) {
-
-            categorySelect.addEventListener(
-                "change",
-                async e => {
-
-                    state.currentCategory = e.target.value;
-
-                    renderTabs();
-
-                    await renderAll();
-                }
-            );
+            categorySelect.addEventListener("change", async e => {
+                state.currentCategory = e.target.value;
+                renderTabs();
+                await renderAll();
+            });
         }
 
-        const search =
-            document.getElementById("search");
+        const search = document.getElementById("search");
 
         if (search) {
-
             search.addEventListener("input", e => {
-
-                state.search =
-                    e.target.value
-                        .trim()
-                        .toLowerCase();
-
+                state.search = e.target.value.trim().toLowerCase();
                 renderTableFromState();
             });
         }
 
-        document
-            .querySelectorAll(".filter")
-            .forEach(button => {
+        document.querySelectorAll(".filter").forEach(button => {
+            button.addEventListener("click", () => {
+                document.querySelectorAll(".filter")
+                    .forEach(b => b.classList.remove("active"));
 
-                button.addEventListener("click", () => {
+                button.classList.add("active");
 
-                    document
-                        .querySelectorAll(".filter")
-                        .forEach(b =>
-                            b.classList.remove("active")
-                        );
+                state.filter = button.dataset.filter;
 
-                    button.classList.add("active");
-
-                    state.filter =
-                        button.dataset.filter;
-
-                    renderTableFromState();
-                });
-
+                renderTableFromState();
             });
+        });
 
-        const updatedAt =
-            document.getElementById("updatedAt");
+        bindPlayerModalEvents();
+
+        const updatedAt = document.getElementById("updatedAt");
 
         if (updatedAt) {
             updatedAt.textContent =
@@ -157,9 +162,7 @@ async function init() {
         }
 
     } catch (error) {
-
         console.error(error);
-
         showError(error);
     }
 }
@@ -170,11 +173,8 @@ async function init() {
 
 function renderTabs() {
 
-    const tabs =
-        document.getElementById("tabs");
-
-    const select =
-        document.getElementById("categorySelect");
+    const tabs = document.getElementById("tabs");
+    const select = document.getElementById("categorySelect");
 
     if (tabs) {
         tabs.innerHTML = "";
@@ -185,9 +185,7 @@ function renderTabs() {
         ];
 
         options.forEach((item, index) => {
-
-            const button =
-                document.createElement("button");
+            const button = document.createElement("button");
 
             button.textContent =
                 item.id === "all"
@@ -195,17 +193,11 @@ function renderTabs() {
                     : `${index}. ${item.name}`;
 
             button.className =
-                state.currentCategory === item.id
-                    ? "active"
-                    : "";
+                state.currentCategory === item.id ? "active" : "";
 
             button.onclick = async () => {
-
-                state.currentCategory =
-                    item.id;
-
+                state.currentCategory = item.id;
                 renderTabs();
-
                 await renderAll();
             };
 
@@ -214,27 +206,19 @@ function renderTabs() {
     }
 
     if (select) {
-
         const options = [
             { id: "all", name: "Tất cả các bảng" },
             ...state.categories
         ];
 
-        select.innerHTML = options
-            .map(item => {
+        select.innerHTML = options.map(item => {
+            const label =
+                item.id === "all" ? "Tất cả các bảng" : item.name;
 
-                const label =
-                    item.id === "all"
-                        ? "Tất cả các bảng"
-                        : item.name;
-
-                return `
-                    <option value="${escapeHTML(item.id)}">
+            return `<option value="${escapeHTML(item.id)}">
                         ${escapeHTML(label)}
-                    </option>
-                `;
-            })
-            .join("");
+                    </option>`;
+        }).join("");
 
         select.value = state.currentCategory;
     }
@@ -251,33 +235,24 @@ async function loadRankings() {
         const merged = [];
 
         for (const category of state.categories) {
-
-            const data =
-                normalizeRanking(
-                    await loadJSON(
-                        `data/rankings/${category.id}.json`
-                    )
-                );
+            const data = normalizeRanking(
+                await loadJSON(`data/rankings/${category.id}.json`)
+            );
 
             data.forEach(item => {
-
                 merged.push({
                     ...item,
                     categoryId: category.id
                 });
-
             });
         }
 
         return mergeAllRankings(merged);
     }
 
-    const data =
-        normalizeRanking(
-            await loadJSON(
-                `data/rankings/${state.currentCategory}.json`
-            )
-        );
+    const data = normalizeRanking(
+        await loadJSON(`data/rankings/${state.currentCategory}.json`)
+    );
 
     return data.map(item => ({
         ...item,
@@ -294,93 +269,58 @@ function mergeAllRankings(data) {
     const map = new Map();
 
     data.forEach(item => {
-
-        const id =
-            normalizeId(
-                item.playerId ??
-                item.id
-            );
+        const id = normalizeId(item.playerId ?? item.id);
 
         if (!id) return;
 
         if (!map.has(id)) {
-
             map.set(id, {
                 ...item,
                 playerId: id,
-                categories: [
-                    item.categoryId
-                ]
+                categories: [item.categoryId]
             });
-
         } else {
-
             const old = map.get(id);
 
-            old.points =
-                Math.max(
-                    Number(old.points || 0),
-                    Number(item.points || 0)
-                );
+            const oldPoints = toNumber(old.points);
+            const newPoints = toNumber(item.points);
 
-            old.highestPoints =
-                Math.max(
-                    Number(old.highestPoints || 0),
-                    Number(item.highestPoints || 0)
-                );
+            const oldLow =
+                old.lowestPoints !== undefined
+                    ? toNumber(old.lowestPoints)
+                    : oldPoints;
 
-            old.lowestPoints =
-                Math.min(
-                    Number(
-                        old.lowestPoints ??
-                        old.points ??
-                        0
-                    ),
-                    Number(
-                        item.lowestPoints ??
-                        item.points ??
-                        0
-                    )
-                );
+            const newLow =
+                item.lowestPoints !== undefined
+                    ? toNumber(item.lowestPoints)
+                    : newPoints;
 
-            old.wins =
-                Number(old.wins || 0) +
-                Number(item.wins || 0);
+            old.points = Math.max(oldPoints, newPoints);
 
-            old.losses =
-                Number(old.losses || 0) +
-                Number(item.losses || 0);
+            old.highestPoints = Math.max(
+                toNumber(old.highestPoints),
+                toNumber(item.highestPoints)
+            );
 
-            old.matches =
-                Number(old.matches || 0) +
-                Number(item.matches || 0);
+            old.lowestPoints = Math.min(oldLow, newLow);
 
-            if (
-                !old.categories.includes(
-                    item.categoryId
-                )
-            ) {
-                old.categories.push(
-                    item.categoryId
-                );
+            old.wins    = toNumber(old.wins)    + toNumber(item.wins);
+            old.losses  = toNumber(old.losses)  + toNumber(item.losses);
+            old.matches = toNumber(old.matches) + toNumber(item.matches);
+
+            if (!old.categories.includes(item.categoryId)) {
+                old.categories.push(item.categoryId);
             }
 
-            if (
-                !old.playerName &&
-                item.playerName
-            ) {
-                old.playerName =
-                    item.playerName;
+            if (!old.playerName && item.playerName) {
+                old.playerName = item.playerName;
             }
         }
     });
 
-    return [...map.values()]
-        .sort(
-            (a, b) =>
-                Number(b.points || 0) -
-                Number(a.points || 0)
-        );
+    return [...map.values()].sort(
+        (a, b) => toNumber(b.points) - toNumber(a.points)
+    );
 }
 
 /* =========================
@@ -388,56 +328,25 @@ function mergeAllRankings(data) {
 ========================= */
 
 async function renderAll() {
-
     try {
+        state.rankings = await loadRankings();
 
-        state.rankings =
-            await loadRankings();
-
-        console.log(
-            "CURRENT CATEGORY:",
-            state.currentCategory
-        );
-
-        console.log(
-            "RANKINGS:",
-            state.rankings
-        );
-
-        console.table(
-            state.rankings.map(r => ({
-                playerId: r.playerId,
-                playerName: r.playerName,
-                points: r.points
-            }))
-        );
-
-        renderPodium(
-            state.rankings.slice(0, 3)
-        );
-
+        renderPodium(state.rankings.slice(0, 3));
         renderTableFromState();
 
-        const tableMeta =
-            document.getElementById("tableMeta");
-
+        const tableMeta = document.getElementById("tableMeta");
         if (tableMeta) {
             tableMeta.textContent =
                 `${state.rankings.length} vận động viên`;
         }
 
-        const tableTitle =
-            document.getElementById("tableTitle");
-
+        const tableTitle = document.getElementById("tableTitle");
         if (tableTitle) {
-            tableTitle.textContent =
-                getCategoryName();
+            tableTitle.textContent = getCategoryName();
         }
 
     } catch (error) {
-
         console.error(error);
-
         showError(error);
     }
 }
@@ -447,20 +356,11 @@ async function renderAll() {
 ========================= */
 
 function findPlayer(playerId) {
-
-    const id =
-        normalizeId(playerId);
-
+    const id = normalizeId(playerId);
     if (!id) return null;
 
     return state.players.find(p => {
-
-        const pid =
-            normalizeId(
-                p.id ??
-                p.playerId
-            );
-
+        const pid = normalizeId(p.id ?? p.playerId);
         return pid === id;
     });
 }
@@ -471,22 +371,11 @@ function findPlayer(playerId) {
 
 function resolvePlayer(ranking) {
 
-    const player =
-        findPlayer(
-            ranking.playerId
-        );
+    const player = findPlayer(ranking.playerId);
 
-    if (player) {
-        return player;
-    }
+    if (player) return player;
 
-    /*
-     * Nếu ID không tìm thấy,
-     * dùng playerName trực tiếp
-     * trong ranking JSON.
-     */
     if (ranking.playerName) {
-
         return {
             id: ranking.playerId,
             name: ranking.playerName,
@@ -509,75 +398,39 @@ function resolvePlayer(ranking) {
 
 function getFilteredRows() {
 
-    let rows =
-        state.rankings.map(
-            (ranking, index) => ({
-
-                ranking,
-
-                player:
-                    resolvePlayer(ranking),
-
-                index
-
-            })
-        );
+    let rows = state.rankings.map((ranking, index) => ({
+        ranking,
+        player: resolvePlayer(ranking),
+        index
+    }));
 
     if (state.search) {
+        rows = rows.filter(({ player = {}, ranking = {} }) => {
+            const text = [
+                player.name,
+                player.phone,
+                player.court,
+                player.company,
+                player.note,
+                player.club,
+                player.city,
+                ranking.playerName,
+                ranking.points,
+                ranking.rank
+            ].filter(Boolean).join(" ").toLowerCase();
 
-        rows =
-            rows.filter(
-                ({
-                    player = {},
-                    ranking = {}
-                }) => {
-
-                    const text = [
-
-                        player.name,
-                        player.phone,
-                        player.court,
-                        player.company,
-                        player.note,
-                        player.club,
-                        player.city,
-
-                        ranking.playerName,
-                        ranking.points,
-                        ranking.rank
-
-                    ]
-                        .filter(Boolean)
-                        .join(" ")
-                        .toLowerCase();
-
-                    return text.includes(
-                        state.search
-                    );
-                }
-            );
+            return text.includes(state.search);
+        });
     }
 
     if (state.filter === "up") {
-
-        rows =
-            rows.filter(
-                ({ ranking }) =>
-                    Number(
-                        ranking.movement || 0
-                    ) > 0
-            );
+        rows = rows.filter(({ ranking }) =>
+            toNumber(ranking.movement) > 0);
     }
 
     if (state.filter === "down") {
-
-        rows =
-            rows.filter(
-                ({ ranking }) =>
-                    Number(
-                        ranking.movement || 0
-                    ) < 0
-            );
+        rows = rows.filter(({ ranking }) =>
+            toNumber(ranking.movement) < 0);
     }
 
     return rows;
@@ -589,186 +442,125 @@ function getFilteredRows() {
 
 function renderTableFromState() {
 
-    const rows =
-        getFilteredRows();
+    const rows = getFilteredRows();
+
+    state.filteredRows = rows;
 
     renderTable(rows);
 
-    const tableMeta =
-        document.getElementById("tableMeta");
-
+    const tableMeta = document.getElementById("tableMeta");
     if (tableMeta) {
-
-        tableMeta.textContent =
-            `${rows.length} vận động viên`;
+        tableMeta.textContent = `${rows.length} vận động viên`;
     }
 }
 
 function renderTable(rows) {
 
-    const body =
-        document.getElementById(
-            "rankingBody"
-        );
-
+    const body = document.getElementById("rankingBody");
     if (!body) return;
 
     if (!rows.length) {
-
         body.innerHTML = `
             <tr>
                 <td colspan="8"
-                    style="
-                        text-align:center;
-                        padding:40px;
-                        color:#64748b
-                    ">
+                    style="text-align:center;padding:40px;color:#64748b">
                     Không tìm thấy vận động viên.
                 </td>
             </tr>
         `;
-
         return;
     }
 
-    body.innerHTML =
-        rows.map(
-            (item, index) => {
+    body.innerHTML = rows.map((item, index) => {
 
-                const r =
-                    item.ranking || {};
+        const r = item.ranking || {};
+        const p = item.player  || {};
 
-                const p =
-                    item.player || {};
+        const movement = toNumber(r.movement);
 
-                const movement =
-                    Number(
-                        r.movement || 0
-                    );
+        let movementHTML = "—";
+        if (movement > 0) movementHTML = `↑ ${movement}`;
+        if (movement < 0) movementHTML = `↓ ${Math.abs(movement)}`;
 
-                let movementHTML = "—";
+        const avatar =
+            p.avatar ||
+            `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                p.name || "VĐV"
+            )}`;
 
-                if (movement > 0) {
-                    movementHTML =
-                        `↑ ${movement}`;
-                }
+        const minPoints = toNumber(
+            r.minPoints ??
+            r.lowestPoints ??
+            r.startPoints ??
+            r.points
+        );
 
-                if (movement < 0) {
-                    movementHTML =
-                        `↓ ${Math.abs(movement)}`;
-                }
+        const note = p.note || movementHTML;
 
-                const avatar =
-                    p.avatar ||
-                    `https://ui-avatars.com/api/?name=${encodeURIComponent(
-                        p.name || "VĐV"
-                    )}`;
+        return `
+            <tr class="ranking-row" data-row="${index}">
 
-                const minPoints =
-                    r.minPoints ??
-                    r.lowestPoints ??
-                    r.startPoints ??
-                    r.points ??
-                    0;
+                <td class="col-stt stt">
+                    ${index + 1}
+                </td>
 
-                const note =
-                    p.note ||
-                    movementHTML;
-
-                return `
-                    <tr>
-
-                        <td class="stt">
-                            ${index + 1}
-                        </td>
-
-                        <td>
-
-                            <div class="player-cell">
-
-                                <img
-                                    class="player-avatar"
-                                    src="${escapeHTML(avatar)}"
-                                    alt=""
-                                >
-
-                                <div>
-
-                                    <div
-                                        class="player-name"
-                                    >
-                                        ${escapeHTML(
-                                            p.name ||
-                                            r.playerName ||
-                                            "Chưa có tên"
-                                        )}
-                                    </div>
-
-                                    <div
-                                        class="player-club"
-                                    >
-                                        ${escapeHTML(
-                                            p.club ||
-                                            p.city ||
-                                            ""
-                                        )}
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </td>
-
-                        <td>
-                            <span class="points">
-                                ${Number(
-                                    r.points || 0
-                                )}
-                            </span>
-                        </td>
-
-                        <td>
-                            <span class="min-points">
-                                ${Number(
-                                    minPoints
-                                )}
-                            </span>
-                        </td>
-
-                        <td>
-                            <span class="phone">
+                <td class="col-name">
+                    <div class="player-cell">
+                        <img
+                            class="player-avatar"
+                            src="${escapeHTML(avatar)}"
+                            alt=""
+                        >
+                        <div>
+                            <div class="player-name">
                                 ${escapeHTML(
-                                    p.phone || "—"
+                                    p.name ||
+                                    r.playerName ||
+                                    "Chưa có tên"
                                 )}
-                            </span>
-                        </td>
+                            </div>
+                            <div class="player-club">
+                                ${escapeHTML(p.club || p.city || "")}
+                            </div>
+                        </div>
+                    </div>
+                </td>
 
-                        <td>
-                            ${escapeHTML(
-                                p.court ||
-                                p.club ||
-                                "—"
-                            )}
-                        </td>
+                <td class="col-points">
+                    <span class="points">
+                        ${formatNumber(r.points)}
+                    </span>
+                </td>
 
-                        <td>
-                            ${escapeHTML(
-                                p.company ||
-                                "—"
-                            )}
-                        </td>
+                <td class="col-min">
+                    <span class="min-points">
+                        ${formatNumber(minPoints)}
+                    </span>
+                </td>
 
-                        <td>
-                            <span class="note">
-                                ${escapeHTML(note)}
-                            </span>
-                        </td>
+                <td class="col-phone">
+                    <span class="phone">
+                        ${escapeHTML(p.phone || "—")}
+                    </span>
+                </td>
 
-                    </tr>
-                `;
-            }
-        ).join("");
+                <td class="col-court">
+                    ${escapeHTML(p.court || p.club || "—")}
+                </td>
+
+                <td class="col-company">
+                    ${escapeHTML(p.company || "—")}
+                </td>
+
+                <td class="col-note">
+                    <span class="note">
+                        ${escapeHTML(note)}
+                    </span>
+                </td>
+
+            </tr>
+        `;
+    }).join("");
 }
 
 /* =========================
@@ -777,89 +569,170 @@ function renderTable(rows) {
 
 function renderPodium(topPlayers) {
 
-    const podium =
-        document.getElementById(
-            "podium"
-        );
-
+    const podium = document.getElementById("podium");
     if (!podium) return;
 
     if (!topPlayers.length) {
-
         podium.innerHTML = "";
-
         return;
     }
 
-    const medals = [
-        "🥇",
-        "🥈",
-        "🥉"
-    ];
+    const medals = ["🥇", "🥈", "🥉"];
 
-    podium.innerHTML =
-        topPlayers.map(
-            (ranking, index) => {
+    podium.innerHTML = topPlayers.map((ranking, index) => {
 
-                const player =
-                    resolvePlayer(
-                        ranking
-                    );
+        const player = resolvePlayer(ranking);
 
-                const avatar =
-                    player.avatar ||
-                    `https://ui-avatars.com/api/?name=${encodeURIComponent(
-                        player.name || "VĐV"
-                    )}`;
+        const avatar =
+            player.avatar ||
+            `https://ui-avatars.com/api/?name=${encodeURIComponent(
+                player.name || "VĐV"
+            )}`;
 
-                return `
-                    <div
-                        class="podium-player ${
-                            index === 0
-                                ? "first"
-                                : ""
-                        }"
-                    >
+        return `
+            <div class="podium-player ${index === 0 ? "first" : ""}">
 
-                        <div class="podium-rank">
-                            ${medals[index]}
-                        </div>
+                <div class="podium-rank">${medals[index]}</div>
 
-                        <img
-                            class="podium-avatar"
-                            src="${escapeHTML(avatar)}"
-                            alt=""
-                        >
+                <img
+                    class="podium-avatar"
+                    src="${escapeHTML(avatar)}"
+                    alt=""
+                >
 
-                        <div class="podium-info">
-
-                            <div
-                                class="podium-name"
-                            >
-                                ${escapeHTML(
-                                    player.name ||
-                                    ranking.playerName ||
-                                    "Chưa có tên"
-                                )}
-                            </div>
-
-                            <div
-                                class="podium-points"
-                            >
-                                <strong>
-                                    ${Number(
-                                        ranking.points || 0
-                                    )}
-                                </strong>
-                                điểm
-                            </div>
-
-                        </div>
-
+                <div class="podium-info">
+                    <div class="podium-name">
+                        ${escapeHTML(
+                            player.name ||
+                            ranking.playerName ||
+                            "Chưa có tên"
+                        )}
                     </div>
-                `;
-            }
-        ).join("");
+                    <div class="podium-points">
+                        <strong>${formatNumber(ranking.points)}</strong>
+                        điểm
+                    </div>
+                </div>
+
+            </div>
+        `;
+    }).join("");
+}
+
+/* =========================
+   PLAYER MODAL
+========================= */
+
+function openPlayerModal(item) {
+
+    if (!item) return;
+
+    const r = item.ranking || {};
+    const p = item.player  || {};
+
+    const modal = document.getElementById("playerModal");
+    if (!modal) return;
+
+    const avatar =
+        p.avatar ||
+        `https://ui-avatars.com/api/?name=${encodeURIComponent(
+            p.name || r.playerName || "VĐV"
+        )}`;
+
+    const minPoints = toNumber(
+        r.minPoints ??
+        r.lowestPoints ??
+        r.startPoints ??
+        r.points
+    );
+
+    const rank = item.index + 1;
+
+    const set = (id, val) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const has =
+            val !== undefined &&
+            val !== null &&
+            String(val).trim() !== "";
+        el.textContent = has ? val : "—";
+        el.classList.toggle("empty", !has);
+    };
+
+    const avatarEl = document.getElementById("pmAvatar");
+    if (avatarEl) avatarEl.src = avatar;
+
+    const nameEl = document.getElementById("pmName");
+    if (nameEl) nameEl.textContent =
+        p.name || r.playerName || "Chưa có tên";
+
+    const clubEl = document.getElementById("pmClub");
+    if (clubEl) clubEl.textContent = p.club || p.city || "";
+
+    const rankEl = document.getElementById("pmRank");
+    if (rankEl) rankEl.textContent = `#${rank}`;
+
+    const pointsEl = document.getElementById("pmPoints");
+    if (pointsEl) pointsEl.textContent = formatNumber(r.points);
+
+    const minEl = document.getElementById("pmMin");
+    if (minEl) minEl.textContent = formatNumber(minPoints);
+
+    set("pmPhone",   p.phone);
+    set("pmCourt",   p.court || p.club);
+    set("pmClub2",   p.club);
+    set("pmCity",    p.city);
+    set("pmCompany", p.company);
+    set("pmNote",    p.note);
+
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+}
+
+function closePlayerModal() {
+
+    const modal = document.getElementById("playerModal");
+    if (!modal) return;
+
+    modal.classList.remove("open");
+    document.body.style.overflow = "";
+}
+
+function bindPlayerModalEvents() {
+
+    const body = document.getElementById("rankingBody");
+    const modal = document.getElementById("playerModal");
+    const closeBtn = document.getElementById("playerModalClose");
+
+    if (body) {
+        body.addEventListener("click", e => {
+
+            const tr = e.target.closest("tr.ranking-row");
+            if (!tr) return;
+
+            const idx = Number(tr.dataset.row);
+
+            const item =
+                state.filteredRows &&
+                state.filteredRows[idx];
+
+            if (item) openPlayerModal(item);
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener("click", closePlayerModal);
+    }
+
+    if (modal) {
+        modal.addEventListener("click", e => {
+            if (e.target === modal) closePlayerModal();
+        });
+    }
+
+    document.addEventListener("keydown", e => {
+        if (e.key === "Escape") closePlayerModal();
+    });
 }
 
 /* =========================
@@ -867,23 +740,15 @@ function renderPodium(topPlayers) {
 ========================= */
 
 function getCategoryName() {
-
-    if (
-        state.currentCategory === "all"
-    ) {
+    if (state.currentCategory === "all") {
         return "Tất cả các bảng";
     }
 
-    const category =
-        state.categories.find(
-            c =>
-                c.id ===
-                state.currentCategory
-        );
+    const category = state.categories.find(
+        c => c.id === state.currentCategory
+    );
 
-    return category
-        ? category.name
-        : "Bảng điểm";
+    return category ? category.name : "Bảng điểm";
 }
 
 /* =========================
@@ -892,30 +757,17 @@ function getCategoryName() {
 
 function showError(error) {
 
-    const body =
-        document.getElementById(
-            "rankingBody"
-        );
-
+    const body = document.getElementById("rankingBody");
     if (!body) return;
 
     body.innerHTML = `
         <tr>
-            <td
-                colspan="8"
-                style="
-                    text-align:center;
-                    padding:40px;
-                    color:#dc2626
-                "
-            >
+            <td colspan="8"
+                style="text-align:center;padding:40px;color:#dc2626">
                 Không thể tải dữ liệu ranking.
                 <br>
                 <small>
-                    ${escapeHTML(
-                        error.message ||
-                        "Lỗi không xác định"
-                    )}
+                    ${escapeHTML(error.message || "Lỗi không xác định")}
                 </small>
             </td>
         </tr>
@@ -927,28 +779,12 @@ function showError(error) {
 ========================= */
 
 function escapeHTML(value) {
-
     return String(value ?? "")
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
 /* =========================
