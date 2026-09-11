@@ -219,6 +219,7 @@
             -webkit-backdrop-filter: blur(3px);
             animation: fadeIn .18s ease;
             overflow-x: hidden;
+            overflow-y: auto;
         }
         .player-modal.open { display: flex; }
 
@@ -233,6 +234,7 @@
             width: 100%;
             max-width: 540px;
             max-height: calc(100vh - 32px);
+            max-height: calc(100dvh - 32px);   /* ưu tiên dvh */
             display: flex;
             flex-direction: column;
             background: #fff;
@@ -241,6 +243,7 @@
             overflow-x: hidden;
             box-shadow: 0 25px 60px rgba(0, 0, 0, .28);
             animation: slideUp .22s ease;
+            margin: auto;                       /* căn giữa khi viewport thấp */
         }
 
         .player-modal-close {
@@ -400,8 +403,6 @@
 
         /* =====================================================
            TABLET (iPad 768px → 1024px)
-           - Podium to hơn, dễ đọc
-           - Bảng điểm vẫn ở dạng mobile-list nhưng thông thoáng
         ===================================================== */
         @media (min-width: 601px) and (max-width: 1024px) {
             .ranking-page { padding: 28px 20px 50px; }
@@ -448,7 +449,7 @@
         }
 
         /* =====================================================
-           MOBILE (điện thoại ≤ 600px)
+           MOBILE / TABLET (≤ 1024px)
         ===================================================== */
         @media (max-width: 1024px) {
 
@@ -605,36 +606,31 @@
             }
 
             /* =====================================================
-               MODAL DẠNG BOTTOM SHEET
+               MODAL — NẰM GIỮA MÀN HÌNH, KHÔNG BỊ THANH ĐỊA CHỈ CHE
             ===================================================== */
             .player-modal {
-                align-items: flex-end;
-                padding: 0;
+                align-items: center;
+                justify-content: center;
+                padding: 16px;
+                padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
                 overflow-x: hidden;
+                overflow-y: auto;
             }
             .player-modal-card {
                 max-width: 100%;
                 width: 100%;
-                max-height: 94vh;
-                border-radius: 20px 20px 0 0;
+                max-height: calc(100vh - 32px);
+                max-height: calc(100dvh - 32px);
+                border-radius: 18px;
                 overflow-x: hidden;
+                margin: auto;
             }
-            .player-modal-card::before {
-                content: "";
-                position: absolute;
-                top: 8px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 42px;
-                height: 4px;
-                border-radius: 999px;
-                background: rgba(255, 255, 255, .55);
-                z-index: 3;
-                pointer-events: none;
-            }
+            /* Bỏ thanh kéo ở đỉnh vì modal không còn là bottom sheet */
+            .player-modal-card::before { display: none; }
+
             .player-modal-head {
-                padding: 22px 16px 16px;
-                border-radius: 20px 20px 0 0;
+                padding: 18px 16px 16px;
+                border-radius: 18px 18px 0 0;
                 min-width: 0;
             }
             .player-modal-avatar { width: 48px; height: 48px; }
@@ -642,7 +638,7 @@
             .player-modal-head-info h3 { font-size: 16.5px; }
             .player-modal-sub { font-size: 11.5px; }
             .player-modal-body {
-                padding: 13px 14px calc(16px + env(safe-area-inset-bottom, 0px));
+                padding: 13px 14px 16px;
                 overflow-x: hidden;
             }
             .player-modal-points { gap: 8px; margin-bottom: 10px; }
@@ -662,7 +658,7 @@
         }
 
         /* =====================================================
-           ĐIỆN THOẠI NHỎ (≤ 600px) — override thêm
+           ĐIỆN THOẠI NHỎ (≤ 600px)
         ===================================================== */
         @media (max-width: 600px) {
             .ranking-page { padding: 22px 12px 40px; }
@@ -695,6 +691,18 @@
             .podium-points { margin-top: 2px; font-size: 11px; }
             .podium-points strong { font-size: 14.5px; font-weight: 850; }
             .podium-player::after { font-size: 16px; right: 8px; }
+
+            /* Modal trên điện thoại: vẫn căn giữa, thêm padding 2 bên */
+            .player-modal {
+                padding: 12px;
+                padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+            }
+            .player-modal-card {
+                max-height: calc(100vh - 24px);
+                max-height: calc(100dvh - 24px);
+                border-radius: 16px;
+            }
+            .player-modal-head { border-radius: 16px 16px 0 0; }
         }
     </style>
 </head>
