@@ -120,7 +120,6 @@
         .podium-points { margin-top: 3px; font-size: 13px; color: #64748b; }
         .podium-points strong { color: #0f172a; font-size: 17px; }
 
-        /* Mũi tên gợi ý có thể bấm */
         .podium-player::after {
             content: "›";
             position: absolute;
@@ -400,75 +399,62 @@
         }
 
         /* =====================================================
-           MOBILE
+           TABLET (iPad 768px → 1024px)
+           - Podium to hơn, dễ đọc
+           - Bảng điểm vẫn ở dạng mobile-list nhưng thông thoáng
         ===================================================== */
-        @media (max-width: 800px) {
+        @media (min-width: 601px) and (max-width: 1024px) {
+            .ranking-page { padding: 28px 20px 50px; }
+            .ranking-heading h1 { font-size: 32px; }
 
-            .ranking-page { padding: 22px 12px 40px; }
-            .ranking-heading { display: block; }
-            .ranking-heading h1 { font-size: 28px; }
-            .updated { margin-top: 10px; }
-            .category-tabs { display: none; }
-            .category-mobile-select { display: block; }
-
-            /* =====================================================
-               PODIUM MOBILE
-               - Top 1: hàng trên, căn giữa
-               - Top 2 & Top 3: hàng dưới, 2 cột
-            ===================================================== */
             .podium {
                 grid-template-columns: 1fr 1fr;
-                gap: 8px;
-                margin-bottom: 18px;
+                gap: 12px;
+                margin-bottom: 20px;
             }
-
-            /* Top 1 (class "first" hoặc con đầu tiên) — trải full, căn giữa */
             .podium-player.first,
             .podium-player:nth-child(1) {
                 grid-column: 1 / -1;
                 justify-self: center;
                 width: 100%;
-                max-width: 400px;
+                max-width: 560px;
             }
-
             .podium-player {
-                min-height: 66px;
-                padding: 10px 26px 10px 12px;   /* chừa chỗ mũi tên */
-                gap: 9px;
-                border-radius: 11px;
+                min-height: 78px;
+                padding: 12px 30px 12px 14px;
+                gap: 11px;
+                border-radius: 12px;
             }
-            .podium-rank {
-                width: 24px;
-                font-size: 19px;
-            }
-            .podium-avatar {
-                width: 38px;
-                height: 38px;
-                border: 2px solid #fff;
-                box-shadow: 0 0 0 1px #e2e8f0;
-            }
-            .podium-info { min-width: 0; padding-right: 0; }
-            .podium-name {
-                font-size: 12.5px;
-                font-weight: 750;
-                line-height: 1.25;
-            }
-            .podium-points {
-                margin-top: 2px;
-                font-size: 11px;
-                color: #64748b;
-            }
-            .podium-points strong {
-                font-size: 14.5px;
-                font-weight: 850;
-                color: #0f172a;
-            }
-            .podium-player::after {
-                font-size: 16px;
-                right: 8px;
-            }
+            .podium-rank { width: 30px; font-size: 22px; }
+            .podium-avatar { width: 44px; height: 44px; }
+            .podium-name { font-size: 14px; }
+            .podium-points { font-size: 12px; margin-top: 3px; }
+            .podium-points strong { font-size: 16px; }
 
-            /* Toolbar */
+            .ranking-card .player-avatar {
+                width: 44px !important;
+                height: 44px !important;
+            }
+            .ranking-card .player-name { font-size: 15.5px !important; }
+            .ranking-card .player-club { font-size: 12px !important; }
+            .ranking-card .points { font-size: 20px !important; }
+            .ranking-card tbody tr.ranking-row {
+                padding: 14px 36px 14px 18px !important;
+            }
+            .ranking-card tbody tr.ranking-row::after {
+                font-size: 22px !important;
+                right: 14px !important;
+            }
+        }
+
+        /* =====================================================
+           MOBILE (điện thoại ≤ 600px)
+        ===================================================== */
+        @media (max-width: 1024px) {
+
+            .category-tabs { display: none; }
+            .category-mobile-select { display: block; }
+
             .toolbar { display: block; }
             .searchbox { width: 100%; margin-bottom: 9px; }
             .filters { overflow-x: auto; }
@@ -478,7 +464,7 @@
             .ranking-card-head h2 { font-size: 18px; }
 
             /* =====================================================
-               BẢNG → GRID LIST TRÊN MOBILE
+               BẢNG → GRID LIST
             ===================================================== */
 
             .ranking-card .table-scroll {
@@ -674,6 +660,42 @@
             }
             .player-modal-info .v { font-size: 12.5px; }
         }
+
+        /* =====================================================
+           ĐIỆN THOẠI NHỎ (≤ 600px) — override thêm
+        ===================================================== */
+        @media (max-width: 600px) {
+            .ranking-page { padding: 22px 12px 40px; }
+            .ranking-heading { display: block; }
+            .ranking-heading h1 { font-size: 28px; }
+            .updated { margin-top: 10px; }
+
+            .podium { grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 18px; }
+            .podium-player.first,
+            .podium-player:nth-child(1) {
+                grid-column: 1 / -1;
+                justify-self: center;
+                width: 100%;
+                max-width: 400px;
+            }
+            .podium-player {
+                min-height: 66px;
+                padding: 10px 26px 10px 12px;
+                gap: 9px;
+                border-radius: 11px;
+            }
+            .podium-rank { width: 24px; font-size: 19px; }
+            .podium-avatar {
+                width: 38px; height: 38px;
+                border: 2px solid #fff;
+                box-shadow: 0 0 0 1px #e2e8f0;
+            }
+            .podium-info { min-width: 0; padding-right: 0; }
+            .podium-name { font-size: 12.5px; font-weight: 750; line-height: 1.25; }
+            .podium-points { margin-top: 2px; font-size: 11px; }
+            .podium-points strong { font-size: 14.5px; font-weight: 850; }
+            .podium-player::after { font-size: 16px; right: 8px; }
+        }
     </style>
 </head>
 
@@ -839,7 +861,6 @@
 
 <!-- =====================================================
      PODIUM → mở modal chi tiết giống bảng
-     (bấm vào Top 1/2/3 sẽ tìm hàng tương ứng trong bảng và kích hoạt)
 ===================================================== -->
 <script>
 (function () {
@@ -852,12 +873,11 @@
         var name = nameEl.textContent.trim();
         if (!name) return;
 
-        // Tìm hàng tương ứng trong bảng điểm
         var rows = document.querySelectorAll('#rankingBody tr.ranking-row');
         for (var i = 0; i < rows.length; i++) {
             var rowNameEl = rows[i].querySelector('.player-name');
             if (rowNameEl && rowNameEl.textContent.trim() === name) {
-                rows[i].click();   // kích hoạt handler có sẵn của ranking.js
+                rows[i].click();
                 return;
             }
         }
