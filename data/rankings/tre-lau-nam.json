@@ -1,7 +1,7 @@
 {
   "category": "tre-lau-nam",
   "season": 2026,
-  "updatedAt": "2026-09-10T17:43:59.390Z",
+  "updatedAt": "2026-09-13T04:07:41.607Z",
   "players": [
     {
       "playerId": "1074",
@@ -308,8 +308,27 @@
       "playerName": "A Duy Thịnh"
     },
     {
-      "playerId": "1088",
+      "playerId": "1789272249055",
+      "playerName": "A Kế",
       "rank": 17,
+      "points": 625,
+      "startPoints": 0,
+      "lowestPoints": 0,
+      "highestPoints": 625,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "movement": 0,
+      "history": [
+        625
+      ],
+      "form": [],
+      "seasonHigh": 625
+    },
+    {
+      "playerId": "1088",
+      "rank": 18,
       "points": 620,
       "startPoints": 620,
       "highestPoints": 620,
@@ -328,7 +347,7 @@
     },
     {
       "playerId": "1095",
-      "rank": 18,
+      "rank": 19,
       "points": 620,
       "startPoints": 620,
       "highestPoints": 620,
@@ -347,7 +366,7 @@
     },
     {
       "playerId": "1098",
-      "rank": 19,
+      "rank": 20,
       "points": 620,
       "startPoints": 620,
       "highestPoints": 620,
@@ -365,8 +384,27 @@
       "playerName": "A Huy (Thỏ Bạc)"
     },
     {
+      "playerId": "1789272242343",
+      "playerName": "A Tâm",
+      "rank": 21,
+      "points": 615,
+      "startPoints": 0,
+      "lowestPoints": 0,
+      "highestPoints": 615,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "movement": 0,
+      "history": [
+        615
+      ],
+      "form": [],
+      "seasonHigh": 615
+    },
+    {
       "playerId": "1072",
-      "rank": 20,
+      "rank": 22,
       "points": 610,
       "startPoints": 610,
       "highestPoints": 610,
@@ -385,7 +423,7 @@
     },
     {
       "playerId": "1076",
-      "rank": 21,
+      "rank": 23,
       "points": 610,
       "startPoints": 610,
       "highestPoints": 610,
@@ -404,7 +442,7 @@
     },
     {
       "playerId": "1080",
-      "rank": 22,
+      "rank": 24,
       "points": 610,
       "startPoints": 610,
       "highestPoints": 610,
@@ -423,7 +461,7 @@
     },
     {
       "playerId": "1081",
-      "rank": 23,
+      "rank": 25,
       "points": 610,
       "startPoints": 610,
       "highestPoints": 610,
@@ -442,7 +480,7 @@
     },
     {
       "playerId": "1086",
-      "rank": 24,
+      "rank": 26,
       "points": 610,
       "startPoints": 610,
       "highestPoints": 610,
@@ -461,7 +499,7 @@
     },
     {
       "playerId": "1091",
-      "rank": 25,
+      "rank": 27,
       "points": 610,
       "startPoints": 610,
       "highestPoints": 610,
@@ -480,7 +518,7 @@
     },
     {
       "playerId": "1099",
-      "rank": 26,
+      "rank": 28,
       "points": 600,
       "startPoints": 600,
       "highestPoints": 600,
@@ -499,7 +537,7 @@
     },
     {
       "playerId": "1101",
-      "rank": 27,
+      "rank": 29,
       "points": 600,
       "startPoints": 600,
       "highestPoints": 600,
@@ -518,7 +556,7 @@
     },
     {
       "playerId": "1102",
-      "rank": 28,
+      "rank": 30,
       "points": 600,
       "startPoints": 600,
       "highestPoints": 600,
@@ -536,8 +574,27 @@
       "playerName": "A Ngọc Trần"
     },
     {
+      "playerId": "1789272231519",
+      "playerName": "A Phong",
+      "rank": 31,
+      "points": 600,
+      "startPoints": 0,
+      "lowestPoints": 0,
+      "highestPoints": 600,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "movement": 0,
+      "history": [
+        600
+      ],
+      "form": [],
+      "seasonHigh": 600
+    },
+    {
       "playerId": "1100",
-      "rank": 29,
+      "rank": 32,
       "points": 595,
       "startPoints": 595,
       "highestPoints": 595,
@@ -556,7 +613,7 @@
     },
     {
       "playerId": "1085",
-      "rank": 30,
+      "rank": 33,
       "points": 590,
       "startPoints": 590,
       "highestPoints": 590,
@@ -575,7 +632,7 @@
     },
     {
       "playerId": "1093",
-      "rank": 31,
+      "rank": 34,
       "points": 580,
       "startPoints": 580,
       "highestPoints": 580,
@@ -594,7 +651,7 @@
     },
     {
       "playerId": "1089",
-      "rank": 32,
+      "rank": 35,
       "points": 570,
       "startPoints": 570,
       "highestPoints": 570,
@@ -613,7 +670,7 @@
     },
     {
       "playerId": "1079",
-      "rank": 33,
+      "rank": 36,
       "points": 0,
       "startPoints": 0,
       "highestPoints": 0,

@@ -1,10 +1,10 @@
 {
   "category": "tre",
   "season": 2026,
-  "updatedAt": "2026-09-11T00:00:00+07:00",
+  "updatedAt": "2026-09-13T04:07:41.607Z",
   "players": [
     {
-      "playerId": 1022,
+      "playerId": "1022",
       "rank": 1,
       "points": 670,
       "startPoints": 670,
@@ -14,13 +14,16 @@
       "wins": 0,
       "losses": 0,
       "tournaments": 0,
-      "history": [670],
+      "history": [
+        670
+      ],
       "movement": 0,
       "form": [],
-      "seasonHigh": 670
+      "seasonHigh": 670,
+      "playerName": "Phát Phan"
     },
     {
-      "playerId": 1017,
+      "playerId": "1017",
       "rank": 2,
       "points": 640,
       "startPoints": 640,
@@ -30,13 +33,16 @@
       "wins": 0,
       "losses": 0,
       "tournaments": 0,
-      "history": [640],
+      "history": [
+        640
+      ],
       "movement": 0,
       "form": [],
-      "seasonHigh": 640
+      "seasonHigh": 640,
+      "playerName": "Đức Anh"
     },
     {
-      "playerId": 1024,
+      "playerId": "1024",
       "rank": 3,
       "points": 640,
       "startPoints": 640,
@@ -46,13 +52,16 @@
       "wins": 0,
       "losses": 0,
       "tournaments": 0,
-      "history": [640],
+      "history": [
+        640
+      ],
       "movement": 0,
       "form": [],
-      "seasonHigh": 640
+      "seasonHigh": 640,
+      "playerName": "Phúc Hoàng"
     },
     {
-      "playerId": 1028,
+      "playerId": "1028",
       "rank": 4,
       "points": 640,
       "startPoints": 640,
@@ -62,29 +71,35 @@
       "wins": 0,
       "losses": 0,
       "tournaments": 0,
-      "history": [640],
+      "history": [
+        640
+      ],
       "movement": 0,
       "form": [],
-      "seasonHigh": 640
+      "seasonHigh": 640,
+      "playerName": "Tuấn"
     },
     {
-      "playerId": 1027,
+      "playerId": "1789271692967",
+      "playerName": "Minh Phú",
       "rank": 5,
-      "points": 630,
-      "startPoints": 630,
-      "highestPoints": 630,
-      "lowestPoints": 630,
+      "points": 640,
+      "startPoints": 0,
+      "lowestPoints": 0,
+      "highestPoints": 640,
       "matches": 0,
       "wins": 0,
       "losses": 0,
       "tournaments": 0,
-      "history": [630],
       "movement": 0,
+      "history": [
+        640
+      ],
       "form": [],
-      "seasonHigh": 630
+      "seasonHigh": 640
     },
     {
-      "playerId": 1029,
+      "playerId": "1027",
       "rank": 6,
       "points": 630,
       "startPoints": 630,
@@ -94,126 +109,36 @@
       "wins": 0,
       "losses": 0,
       "tournaments": 0,
-      "history": [630],
+      "history": [
+        630
+      ],
       "movement": 0,
       "form": [],
-      "seasonHigh": 630
+      "seasonHigh": 630,
+      "playerName": "Thành"
     },
     {
-      "playerId": 1016,
+      "playerId": "1029",
       "rank": 7,
-      "points": 615,
-      "startPoints": 615,
-      "highestPoints": 615,
-      "lowestPoints": 615,
+      "points": 630,
+      "startPoints": 630,
+      "highestPoints": 630,
+      "lowestPoints": 630,
       "matches": 0,
       "wins": 0,
       "losses": 0,
       "tournaments": 0,
-      "history": [615],
+      "history": [
+        630
+      ],
       "movement": 0,
       "form": [],
-      "seasonHigh": 615
+      "seasonHigh": 630,
+      "playerName": "Thịnh (LKT)"
     },
     {
-      "playerId": 1020,
+      "playerId": "1014",
       "rank": 8,
-      "points": 615,
-      "startPoints": 615,
-      "highestPoints": 615,
-      "lowestPoints": 615,
-      "matches": 0,
-      "wins": 0,
-      "losses": 0,
-      "tournaments": 0,
-      "history": [615],
-      "movement": 0,
-      "form": [],
-      "seasonHigh": 615
-    },
-    {
-      "playerId": 1021,
-      "rank": 9,
-      "points": 615,
-      "startPoints": 615,
-      "highestPoints": 615,
-      "lowestPoints": 615,
-      "matches": 0,
-      "wins": 0,
-      "losses": 0,
-      "tournaments": 0,
-      "history": [615],
-      "movement": 0,
-      "form": [],
-      "seasonHigh": 615
-    },
-    {
-      "playerId": 1015,
-      "rank": 10,
-      "points": 610,
-      "startPoints": 610,
-      "highestPoints": 610,
-      "lowestPoints": 610,
-      "matches": 0,
-      "wins": 0,
-      "losses": 0,
-      "tournaments": 0,
-      "history": [610],
-      "movement": 0,
-      "form": [],
-      "seasonHigh": 610
-    },
-    {
-      "playerId": 1023,
-      "rank": 11,
-      "points": 610,
-      "startPoints": 610,
-      "highestPoints": 610,
-      "lowestPoints": 610,
-      "matches": 0,
-      "wins": 0,
-      "losses": 0,
-      "tournaments": 0,
-      "history": [610],
-      "movement": 0,
-      "form": [],
-      "seasonHigh": 610
-    },
-    {
-      "playerId": 1025,
-      "rank": 12,
-      "points": 610,
-      "startPoints": 610,
-      "highestPoints": 610,
-      "lowestPoints": 610,
-      "matches": 0,
-      "wins": 0,
-      "losses": 0,
-      "tournaments": 0,
-      "history": [610],
-      "movement": 0,
-      "form": [],
-      "seasonHigh": 610
-    },
-    {
-      "playerId": 1026,
-      "rank": 13,
-      "points": 610,
-      "startPoints": 610,
-      "highestPoints": 610,
-      "lowestPoints": 610,
-      "matches": 0,
-      "wins": 0,
-      "losses": 0,
-      "tournaments": 0,
-      "history": [610],
-      "movement": 0,
-      "form": [],
-      "seasonHigh": 610
-    },
-    {
-      "playerId": 1014,
-      "rank": 14,
       "points": 620,
       "startPoints": 620,
       "highestPoints": 620,
@@ -222,30 +147,359 @@
       "wins": 0,
       "losses": 0,
       "tournaments": 0,
-      "history": [620],
+      "history": [
+        620
+      ],
       "movement": 0,
+      "form": [],
+      "seasonHigh": 620,
+      "playerName": "D Toàn"
+    },
+    {
+      "playerId": "1789271650231",
+      "playerName": "Đăng Khoa",
+      "rank": 9,
+      "points": 620,
+      "startPoints": 0,
+      "lowestPoints": 0,
+      "highestPoints": 620,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "movement": 0,
+      "history": [
+        620
+      ],
       "form": [],
       "seasonHigh": 620
     },
     {
-      "playerId": 1018,
-      "rank": 15,
-      "points": 600,
-      "startPoints": 600,
-      "highestPoints": 600,
-      "lowestPoints": 600,
+      "playerId": "1016",
+      "rank": 10,
+      "points": 615,
+      "startPoints": 615,
+      "highestPoints": 615,
+      "lowestPoints": 615,
       "matches": 0,
       "wins": 0,
       "losses": 0,
       "tournaments": 0,
-      "history": [600],
+      "history": [
+        615
+      ],
       "movement": 0,
       "form": [],
-      "seasonHigh": 600
+      "seasonHigh": 615,
+      "playerName": "Trọng Tin"
     },
     {
-      "playerId": 1019,
+      "playerId": "1020",
+      "rank": 11,
+      "points": 615,
+      "startPoints": 615,
+      "highestPoints": 615,
+      "lowestPoints": 615,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "history": [
+        615
+      ],
+      "movement": 0,
+      "form": [],
+      "seasonHigh": 615,
+      "playerName": "Nguyễn Cường"
+    },
+    {
+      "playerId": "1021",
+      "rank": 12,
+      "points": 615,
+      "startPoints": 615,
+      "highestPoints": 615,
+      "lowestPoints": 615,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "history": [
+        615
+      ],
+      "movement": 0,
+      "form": [],
+      "seasonHigh": 615,
+      "playerName": "Duy Long"
+    },
+    {
+      "playerId": "1789271704583",
+      "playerName": "Quang",
+      "rank": 13,
+      "points": 615,
+      "startPoints": 0,
+      "lowestPoints": 0,
+      "highestPoints": 615,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "movement": 0,
+      "history": [
+        615
+      ],
+      "form": [],
+      "seasonHigh": 615
+    },
+    {
+      "playerId": "1015",
+      "rank": 14,
+      "points": 610,
+      "startPoints": 610,
+      "highestPoints": 610,
+      "lowestPoints": 610,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "history": [
+        610
+      ],
+      "movement": 0,
+      "form": [],
+      "seasonHigh": 610,
+      "playerName": "D Đào"
+    },
+    {
+      "playerId": "1023",
+      "rank": 15,
+      "points": 610,
+      "startPoints": 610,
+      "highestPoints": 610,
+      "lowestPoints": 610,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "history": [
+        610
+      ],
+      "movement": 0,
+      "form": [],
+      "seasonHigh": 610,
+      "playerName": "Phát Patternis"
+    },
+    {
+      "playerId": "1025",
       "rank": 16,
+      "points": 610,
+      "startPoints": 610,
+      "highestPoints": 610,
+      "lowestPoints": 610,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "history": [
+        610
+      ],
+      "movement": 0,
+      "form": [],
+      "seasonHigh": 610,
+      "playerName": "Quang Ph"
+    },
+    {
+      "playerId": "1026",
+      "rank": 17,
+      "points": 610,
+      "startPoints": 610,
+      "highestPoints": 610,
+      "lowestPoints": 610,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "history": [
+        610
+      ],
+      "movement": 0,
+      "form": [],
+      "seasonHigh": 610,
+      "playerName": "Triều"
+    },
+    {
+      "playerId": "1789271597159",
+      "playerName": "Toàn Đinh",
+      "rank": 18,
+      "points": 610,
+      "startPoints": 0,
+      "lowestPoints": 0,
+      "highestPoints": 610,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "movement": 0,
+      "history": [
+        610
+      ],
+      "form": [],
+      "seasonHigh": 610
+    },
+    {
+      "playerId": "1789271609303",
+      "playerName": "Bi",
+      "rank": 19,
+      "points": 610,
+      "startPoints": 0,
+      "lowestPoints": 0,
+      "highestPoints": 610,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "movement": 0,
+      "history": [
+        610
+      ],
+      "form": [],
+      "seasonHigh": 610
+    },
+    {
+      "playerId": "1789271621191",
+      "playerName": "Quyền",
+      "rank": 20,
+      "points": 610,
+      "startPoints": 0,
+      "lowestPoints": 0,
+      "highestPoints": 610,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "movement": 0,
+      "history": [
+        610
+      ],
+      "form": [],
+      "seasonHigh": 610
+    },
+    {
+      "playerId": "1789271641311",
+      "playerName": "Duy Anh",
+      "rank": 21,
+      "points": 610,
+      "startPoints": 0,
+      "lowestPoints": 0,
+      "highestPoints": 610,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "movement": 0,
+      "history": [
+        610
+      ],
+      "form": [],
+      "seasonHigh": 610
+    },
+    {
+      "playerId": "1789271666671",
+      "playerName": "Tuấn Anh",
+      "rank": 22,
+      "points": 610,
+      "startPoints": 0,
+      "lowestPoints": 0,
+      "highestPoints": 610,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "movement": 0,
+      "history": [
+        610
+      ],
+      "form": [],
+      "seasonHigh": 610
+    },
+    {
+      "playerId": "1789271672775",
+      "playerName": "Dương",
+      "rank": 23,
+      "points": 610,
+      "startPoints": 0,
+      "lowestPoints": 0,
+      "highestPoints": 610,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "movement": 0,
+      "history": [
+        610
+      ],
+      "form": [],
+      "seasonHigh": 610
+    },
+    {
+      "playerId": "1789271681831",
+      "playerName": "Phi Hùng",
+      "rank": 24,
+      "points": 610,
+      "startPoints": 0,
+      "lowestPoints": 0,
+      "highestPoints": 610,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "movement": 0,
+      "history": [
+        610
+      ],
+      "form": [],
+      "seasonHigh": 610
+    },
+    {
+      "playerId": "1789271699231",
+      "playerName": "Hy",
+      "rank": 25,
+      "points": 610,
+      "startPoints": 0,
+      "lowestPoints": 0,
+      "highestPoints": 610,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "movement": 0,
+      "history": [
+        610
+      ],
+      "form": [],
+      "seasonHigh": 610
+    },
+    {
+      "playerId": "1789271708503",
+      "playerName": "Tín",
+      "rank": 26,
+      "points": 610,
+      "startPoints": 0,
+      "lowestPoints": 0,
+      "highestPoints": 610,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "movement": 0,
+      "history": [
+        610
+      ],
+      "form": [],
+      "seasonHigh": 610
+    },
+    {
+      "playerId": "1018",
+      "rank": 27,
       "points": 600,
       "startPoints": 600,
       "highestPoints": 600,
@@ -254,10 +508,32 @@
       "wins": 0,
       "losses": 0,
       "tournaments": 0,
-      "history": [600],
+      "history": [
+        600
+      ],
       "movement": 0,
       "form": [],
-      "seasonHigh": 600
+      "seasonHigh": 600,
+      "playerName": "Minh Nguyễn (Con Quốc)"
+    },
+    {
+      "playerId": "1019",
+      "rank": 28,
+      "points": 600,
+      "startPoints": 600,
+      "highestPoints": 600,
+      "lowestPoints": 600,
+      "matches": 0,
+      "wins": 0,
+      "losses": 0,
+      "tournaments": 0,
+      "history": [
+        600
+      ],
+      "movement": 0,
+      "form": [],
+      "seasonHigh": 600,
+      "playerName": "Minh Tennis"
     }
   ]
 }

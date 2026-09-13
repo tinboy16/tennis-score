@@ -33,11 +33,19 @@
   },
   {
     "id": "1018",
-    "name": "Minh Nguyễn (Con AOide)",
+    "name": "Minh Nguyễn (Con Quốc)",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "",
     "categories": [
       "tre"
-    ],
-    "points": 600
+    ]
   },
   {
     "id": "1019",
@@ -718,5 +726,309 @@
       "tre-lau-nam"
     ],
     "points": 630
+  },
+  {
+    "id": "1789271597159",
+    "name": "Toàn Đinh",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "",
+    "categories": [
+      "tre"
+    ]
+  },
+  {
+    "id": "1789271609303",
+    "name": "Bi",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "",
+    "categories": [
+      "tre"
+    ]
+  },
+  {
+    "id": "1789271621191",
+    "name": "Quyền",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "",
+    "categories": [
+      "tre"
+    ]
+  },
+  {
+    "id": "1789271641311",
+    "name": "Duy Anh",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "",
+    "categories": [
+      "tre"
+    ]
+  },
+  {
+    "id": "1789271650231",
+    "name": "Đăng Khoa",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "",
+    "categories": [
+      "tre"
+    ]
+  },
+  {
+    "id": "1789271666671",
+    "name": "Tuấn Anh",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "Louis Nguyễn",
+    "categories": [
+      "tre"
+    ]
+  },
+  {
+    "id": "1789271672775",
+    "name": "Dương",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "",
+    "categories": [
+      "tre"
+    ]
+  },
+  {
+    "id": "1789271681831",
+    "name": "Phi Hùng",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "",
+    "categories": [
+      "tre"
+    ]
+  },
+  {
+    "id": "1789271692967",
+    "name": "Minh Phú",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "",
+    "categories": [
+      "tre"
+    ]
+  },
+  {
+    "id": "1789271699231",
+    "name": "Hy",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "",
+    "categories": [
+      "tre"
+    ]
+  },
+  {
+    "id": "1789271704583",
+    "name": "Quang",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "",
+    "categories": [
+      "tre"
+    ]
+  },
+  {
+    "id": "1789271708503",
+    "name": "Tín",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "",
+    "categories": [
+      "tre"
+    ]
+  },
+  {
+    "id": "1789272017263",
+    "name": "Tài HD",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "",
+    "categories": [
+      "trung-nien"
+    ]
+  },
+  {
+    "id": "1789272026143",
+    "name": "Hoàng Quân",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "",
+    "categories": [
+      "trung-nien"
+    ]
+  },
+  {
+    "id": "1789272042647",
+    "name": "Dũng",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "Smarh",
+    "categories": [
+      "trung-nien"
+    ]
+  },
+  {
+    "id": "1789272094016",
+    "name": "A Phong",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "",
+    "categories": [
+      "tre-lau-nam"
+    ]
+  },
+  {
+    "id": "1789272231519",
+    "name": "A Phong",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "",
+    "categories": [
+      "tre-lau-nam"
+    ]
+  },
+  {
+    "id": "1789272242343",
+    "name": "A Tâm",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "",
+    "categories": [
+      "tre-lau-nam"
+    ]
+  },
+  {
+    "id": "1789272249055",
+    "name": "A Kế",
+    "phone": "",
+    "court": "",
+    "company": "",
+    "club": "",
+    "city": "",
+    "hand": "Phải",
+    "joinedYear": 2026,
+    "avatar": "",
+    "note": "",
+    "categories": [
+      "tre-lau-nam"
+    ]
   }
 ]
